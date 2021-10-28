@@ -1,5 +1,8 @@
 # Prerequisites
 *.d
+*.pdb
+*.ilk
+.vs/
 
 # Compiled Object files
 *.slo
@@ -14,7 +17,6 @@
 # Compiled Dynamic libraries
 *.so
 *.dylib
-*.dll
 
 # Fortran module files
 *.mod
