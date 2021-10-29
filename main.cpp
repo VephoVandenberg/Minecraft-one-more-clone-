@@ -9,7 +9,7 @@
 using namespace gameModule;
 
 const uint32_t screenWidth 	= 1200;
-const uint32_t screenHeight = 800;
+const uint32_t screenHeight = 1000;
 
 game minecraft;
 

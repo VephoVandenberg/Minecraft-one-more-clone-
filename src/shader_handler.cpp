@@ -41,6 +41,8 @@ shaderHandler::shaderHandler(const char *vertexSrc, const char *fragmentSrc)
 
 	const char *vertexCode = vertexStringFile.c_str();
 	const char *fragmentCode = fragmentStringFile.c_str();
+
+	compile(vertexCode, fragmentCode);
 }
 
 shaderHandler::~shaderHandler(void)
@@ -50,13 +52,28 @@ shaderHandler::~shaderHandler(void)
 
 void shaderHandler::compile(const char *vertexCode, const char *fragmentCode)
 {
+	int success;
+	char infoLog[512];
+
 	uint32_t vertexID = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(vertexID, 1, &vertexCode, NULL);
 	glCompileShader(vertexID);
+	glGetShaderiv(vertexID, GL_COMPILE_STATUS, &success);
+	if (!success)
+	{
+		glGetShaderInfoLog(vertexID, 512, NULL, infoLog);
+		std::cout << "ERROR::SHADER::VERTEX::COMPILATION:\n " << infoLog << std::endl; 
+	}
 
 	uint32_t fragmentID = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(fragmentID, 1, &fragmentCode, NULL);
 	glCompileShader(fragmentID);
+	glGetShaderiv(fragmentID, GL_COMPILE_STATUS, &success);
+	if (!success)
+	{
+		glGetShaderInfoLog(fragmentID, 512, NULL, infoLog);
+		std::cout << "ERROR::SHADER::VERTEX::COMPILATION:\n " << infoLog << std::endl; 
+	}
 
 	shaderID = glCreateProgram();
 	glAttachShader(shaderID, vertexID);
