@@ -20,6 +20,7 @@ namespace gameModule
 		~game(void);
 		void init(void);
 		void render(void);
+		void update(void);
 	};
 }
 

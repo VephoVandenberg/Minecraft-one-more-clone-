@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "game.h"
+#include "resource_manager.h"
 
 using namespace gameModule;
 
@@ -15,7 +16,7 @@ game::~game(void)
 
 void game::init()
 {
-	quadShader = new shaderHandler("shaders/blockVertexShader.vert", "shaders/blockFragmentShader.frag");
+	resourceManager::loadShader("shaders/blockVertexShader.vert", "shaders/blockFragmentShader.frag", "quadShader");
 
 	float quadVertices[24] = {
 		-0.5f, -0.5f, 0.0f,  0.1f, 0.5f, 0.5f,
@@ -52,8 +53,13 @@ void game::init()
 
 void game::render(void)
 {
-	quadShader->use();
+	resourceManager::getShader("quadShader").use();
 	glBindVertexArray(blockVAO);
 
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, NULL);
+}
+
+void game::update(void)
+{
+
 }

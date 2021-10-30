@@ -9,6 +9,7 @@ namespace gameModule
 	class shaderHandler
 	{
 	public:
+		shaderHandler(void);
 		shaderHandler(const char *vertexSrc, const char *fragmentSrc);
 		~shaderHandler(void);
 		void compile(const char *vertexCode, const char *fragmentCode);

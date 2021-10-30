@@ -6,6 +6,11 @@
 
 using namespace gameModule;
 
+shaderHandler::shaderHandler(void)
+{
+	
+}
+
 shaderHandler::shaderHandler(const char *vertexSrc, const char *fragmentSrc)
 {
 	std::ifstream vertexFile;
