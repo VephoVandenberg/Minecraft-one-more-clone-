@@ -11,7 +11,7 @@ using namespace gameModule;
 const uint32_t screenWidth 	= 1200;
 const uint32_t screenHeight = 1000;
 
-game minecraft;
+game minecraft(screenWidth, screenHeight);
 
 int main(int argc, char **argv)
 {
@@ -35,6 +35,7 @@ int main(int argc, char **argv)
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		minecraft.render();
+		minecraft.update();
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();

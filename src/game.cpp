@@ -5,19 +5,24 @@
 
 using namespace gameModule;
 
-game::game(void)
+game::game(uint32_t width, uint32_t height)
 {
+	screenWidth = width;
+	screenHeight = height;
 }
 
 game::~game(void)
 {
-	delete quadShader;
+	delete cubeRenderer;
 }
 
 void game::init()
 {
-	resourceManager::loadShader("shaders/blockVertexShader.vert", "shaders/blockFragmentShader.frag", "quadShader");
+	resourceManager::loadShader("shaders/blockVertexShader.vert", "shaders/blockFragmentShader.frag", "cubeShader");
 
+
+	cubeRenderer = new renderer(resourceManager::getShader("cubeShader")); 
+	/*
 	float quadVertices[24] = {
 		-0.5f, -0.5f, 0.0f,  0.1f, 0.5f, 0.5f,
 		 0.5f, -0.5f, 0.0f,  0.5f, 0.3f, 0.5f,
@@ -29,6 +34,7 @@ void game::init()
 		0, 1, 2,
 		0, 2, 3
 	};
+
 	uint32_t blockVBO, blockIBO;
 	
 
@@ -48,15 +54,12 @@ void game::init()
 
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6*sizeof(float), (void*)(3*sizeof(float)));
 	glEnableVertexAttribArray(1);
-
+	*/
 }
 
 void game::render(void)
 {
-	resourceManager::getShader("quadShader").use();
-	glBindVertexArray(blockVAO);
-
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, NULL);
+	cubeRenderer->drawObject();
 }
 
 void game::update(void)

@@ -6,6 +6,7 @@
 #include <stdint.h>
 
 #include "shader_handler.h"
+#include "renderer.h"
 
 namespace gameModule
 {
@@ -14,13 +15,16 @@ namespace gameModule
 	public:
 		uint32_t screenWidth, screenHeight;
 		uint32_t blockVAO;
-		shaderHandler *quadShader;
+		uint32_t keys[1024];
+
+		renderer *cubeRenderer;
 	public:
-		game(void);
+		game(uint32_t screenWidth, uint32_t screenHeight);
 		~game(void);
 		void init(void);
 		void render(void);
 		void update(void);
+		void processInput(void);
 	};
 }
 
