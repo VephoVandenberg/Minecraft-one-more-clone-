@@ -90,3 +90,8 @@ void shaderHandler::use(void)
 {
 	glUseProgram(shaderID);
 }
+
+void shaderHandler::setMatrix4f(glm::mat4 matrix, std::string name)
+{
+	glUniformMatrix4fv(glGetUniformLocation(shaderID, name.c_str()), 1, GL_FALSE, &matrix[0][0]);
+}
