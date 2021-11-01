@@ -22,12 +22,12 @@ void game::init()
 	cubeRenderer = new renderer(resourceManager::getShader("cubeShader"), screenWidth, screenHeight); 
 }
 
-void game::render(void)
+void game::render(float dt)
 {
 	cubeRenderer->drawObject();
 }
 
-void game::update(void)
+void game::update(float dt)
 {
 
 }

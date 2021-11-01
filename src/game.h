@@ -22,8 +22,8 @@ namespace gameModule
 		game(uint32_t screenWidth, uint32_t screenHeight);
 		~game(void);
 		void init(void);
-		void render(void);
-		void update(void);
+		void render(float dt);
+		void update(float dt);
 		void processInput(void);
 	};
 }

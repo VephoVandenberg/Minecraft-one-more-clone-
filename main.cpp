@@ -31,13 +31,20 @@ int main(int argc, char **argv)
 
 	minecraft.init();
 
+	float lastFrame = 0.0f;
+	float deltaTime = 0.0f;
+
 	while (!glfwWindowShouldClose(window))
 	{
+		float currentFrame = glfwGetTime();
+		deltaTime = currentFrame - lastFrame;
+		lastFrame = currentFrame;
+
 		glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
-		minecraft.render();
-		minecraft.update();
+		minecraft.render(deltaTime);
+		minecraft.update(deltaTime);
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
