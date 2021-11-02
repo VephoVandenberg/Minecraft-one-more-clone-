@@ -11,6 +11,9 @@ using namespace gameModule;
 const uint32_t screenWidth 	= 1200;
 const uint32_t screenHeight = 1000;
 
+void keysCallback(GLFWwindow *window, int key, int scancode, int action, int mods);
+void mouseCallback(GLFWwindow *window, double xPos, double yPos);
+
 game minecraft(screenWidth, screenHeight);
 
 int main(int argc, char **argv)
@@ -20,6 +23,7 @@ int main(int argc, char **argv)
 		std::cout << "Could not initialize GLFW" << std::endl;
 	}
 	GLFWwindow *window = glfwCreateWindow(screenWidth, screenHeight, "YourCraft", NULL, NULL);
+	glfwSetKeyCallback(window, keysCallback);
 	glfwMakeContextCurrent(window);
 	
 	if (glewInit() != GLEW_OK)
@@ -43,6 +47,7 @@ int main(int argc, char **argv)
 		glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
+		minecraft.processInput(deltaTime);
 		minecraft.render(deltaTime);
 		minecraft.update(deltaTime);
 
@@ -52,4 +57,25 @@ int main(int argc, char **argv)
 
 
 	return 0;
+}
+
+
+void keysCallback(GLFWwindow *window, int key, int scancode, int action, int mods)
+{
+	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+	{
+		glfwSetWindowShouldClose(window, true);
+	}
+
+	if (key >= 0 && key <= 1024)
+	{
+		if (action == GLFW_PRESS)
+		{
+			minecraft.keys[key] = true;
+		}
+		else if (action == GLFW_RELEASE)
+		{
+			minecraft.keys[key] = false;
+		}
+	}
 }
