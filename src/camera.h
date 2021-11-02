@@ -17,8 +17,9 @@ namespace gameModule
 		glm::mat4 view;
 
 		float yaw = -90.0f;
-		float pitch;
+		float pitch = 0.0f;
 		float speed = 2.5f;
+		float mouseSensitivity = 0.1f;
 
 	public:
 		camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 3.0f), 
@@ -27,7 +28,7 @@ namespace gameModule
 		~camera(void);
 		glm::mat4 getViewMatrix(void);
 		void updateCamera(shaderHandler& shader, glm::mat4 matrix, std::string uniform);
-		void updateCameraDirection(double xPos, double yPos);
+		void updateCameraDirection(float xOffset, float yOffset);
 	};
 }
 

@@ -31,22 +31,22 @@ void game::render(float dt)
 	cubeRenderer->drawObject();
 }
 
-void game::processInput(float dt)
+void game::processKeyboard(float dt)
 {
 	float speed = gameCamera->speed * dt;
 	if (keys[GLFW_KEY_W])
 	{
 		gameCamera->cameraPos += gameCamera->cameraFront * speed;
 	}
-	else if(keys[GLFW_KEY_S])
+	if(keys[GLFW_KEY_S])
 	{
 		gameCamera->cameraPos -= gameCamera->cameraFront * speed;
 	}
-	else if(keys[GLFW_KEY_A])
+	if(keys[GLFW_KEY_A])
 	{
 		gameCamera->cameraPos -= glm::normalize(glm::cross(gameCamera->cameraFront, gameCamera->cameraUp)) * speed;
 	}
-	else if(keys[GLFW_KEY_D])
+	if(keys[GLFW_KEY_D])
 	{
 		gameCamera->cameraPos += glm::normalize(glm::cross(gameCamera->cameraFront, gameCamera->cameraUp)) * speed;
 	}

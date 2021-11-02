@@ -27,7 +27,27 @@ void camera::updateCamera(shaderHandler& shader, glm::mat4 matrix, std::string u
 }
 
 
-void camera::updateCameraDirection(double x, double y)
+void camera::updateCameraDirection(float xOffset, float yOffset)
 {
+	xOffset *= mouseSensitivity;
+	yOffset *= mouseSensitivity;
 
+	yaw += xOffset;
+	pitch += yOffset;
+
+	if (pitch > 89.0f)
+	{
+		pitch = 89.0f;
+	}
+	if (pitch < -89.0f)
+	{
+		pitch = -89.0f;
+	}
+
+
+	glm::vec3 direction;
+	direction.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+	direction.y = sin(glm::radians(pitch));
+	direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+	cameraFront = glm::normalize(direction);
 }

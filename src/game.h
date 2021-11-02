@@ -26,8 +26,8 @@ namespace gameModule
 		void init(void);
 		void render(float dt);
 		void update(float dt);
-		void processInput(float dt);
-		void processMousr(void);
+		void processKeyboard(float dt);
+		void processMouse(void);
 	};
 }
 
