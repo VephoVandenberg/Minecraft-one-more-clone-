@@ -18,7 +18,7 @@ namespace gameModule
 
 		float yaw = -90.0f;
 		float pitch = 0.0f;
-		float speed = 2.5f;
+		float speed = 5.0f;
 		float mouseSensitivity = 0.1f;
 
 	public:

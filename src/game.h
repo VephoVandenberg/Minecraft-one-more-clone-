@@ -4,10 +4,12 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <stdint.h>
+#include <vector>
 
 #include "shader_handler.h"
 #include "camera.h"
 #include "renderer.h"
+#include "block.h"
 
 namespace gameModule
 {
@@ -20,6 +22,7 @@ namespace gameModule
 
 		renderer *cubeRenderer;
 		camera 	 *gameCamera;
+		std::vector<block> blocks;
 	public:
 		game(uint32_t screenWidth, uint32_t screenHeight);
 		~game(void);

@@ -82,12 +82,12 @@ void renderer::initRenderData()
 	glEnableVertexAttribArray(1);
 }
 
-void renderer::drawObject(void)
+void renderer::drawObject(glm::vec3 position)
 {
-	glm::mat4 model 		= glm::mat4(1.0f);
+	glm::mat4 model = glm::mat4(1.0f);
 	glm::mat4 projection;
 
-	//model = glm::rotate(model, glm::radians(-33.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+	model = glm::translate(model, position);
 	projection = glm::perspective(glm::radians(45.0f), (float)(screenWidth/screenHeight), 0.1f, 100.0f); 
 
 	cubeShader.setMatrix4f(model, "model");

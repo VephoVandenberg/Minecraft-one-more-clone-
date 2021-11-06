@@ -2,6 +2,7 @@
 #define RENDERER_H
 
 #include <stdint.h>
+#include <glm/glm.hpp>
 
 #include "shader_handler.h"
 
@@ -13,7 +14,7 @@ namespace gameModule
 		renderer(shaderHandler& sHandler, uint32_t width, uint32_t height);
 		~renderer(void);
 
-		void drawObject(void);
+		void drawObject(glm::vec3 position = glm::vec3(0.0f, 0.5f, 0.0f));
 	private:
 		shaderHandler cubeShader;
 		uint32_t cubeVAO;
