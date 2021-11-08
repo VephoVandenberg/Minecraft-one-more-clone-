@@ -9,7 +9,7 @@
 #include "shader_handler.h"
 #include "camera.h"
 #include "renderer.h"
-#include "block.h"
+#include "world.h"
 
 namespace gameModule
 {
@@ -22,7 +22,7 @@ namespace gameModule
 
 		renderer *cubeRenderer;
 		camera 	 *gameCamera;
-		std::vector<block> blocks;
+		world	 *gameWorld;
 	public:
 		game(uint32_t screenWidth, uint32_t screenHeight);
 		~game(void);

@@ -24,23 +24,12 @@ void game::init()
 	
 	cubeRenderer = new renderer(resourceManager::getShader("cubeShader"), screenWidth, screenHeight);
 	gameCamera = new camera();
-
-	for (int x = 0; x < 5; x+=2)
-	{
-		for (int z = 0; z < 5; z+=2)
-		{
-			block blockObj(glm::vec3(x, 0.0f, z));
-			blocks.push_back(blockObj);
-		}
-	}
+	gameWorld = new world();
 }
 
 void game::render(float dt)
 {
-	for (auto blockObj : blocks)
-	{
-		blockObj.draw(cubeRenderer);
-	}
+	gameWorld->render(cubeRenderer);
 }
 
 void game::processKeyboard(float dt)
